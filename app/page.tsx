@@ -20,12 +20,17 @@ export default function HomePage() {
               Veda Rakshanam and traditional Seva.
             </p>
             <div className="flex gap-4">
-              
               <Link
                 href="/about"
                 className="border border-gray-300 px-8 py-4 font-bold rounded-sm hover:bg-gray-50 transition cursor-pointer"
               >
                 VIEW MORE
+              </Link>
+              <Link
+                href="/kumbabishekam"
+                className="border border-gray-300 px-8 py-4 font-bold rounded-sm hover:bg-gray-50 transition cursor-pointer"
+              >
+                KUMBABISHEKAM
               </Link>
             </div>
           </div>

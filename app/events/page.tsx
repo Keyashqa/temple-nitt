@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState, useEffect } from "react"; // Added hooks
 import { client } from "@/sanity/lib/client";
 
 type Event = {
@@ -7,19 +10,28 @@ type Event = {
   date: string;
 };
 
-// Use this query to get all events
 const QUERY = `*[_type == "event"] | order(date asc)`;
 
-export default async function EventsPage() {
-  // 1. Fetch data safely to avoid build crashes
-  let events: Event[] = [];
-  try {
-    events = await client.fetch(QUERY);
-  } catch (error) {
-    console.error("Sanity fetch failed during build:", error);
-    // Returning an empty array allows the build to finish even if Sanity is down
-    events = [];
-  }
+export default function EventsPage() {
+  // 1. Setup state for events and loading (just like Articles)
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // 2. Fetch data inside useEffect
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const data = await client.fetch(QUERY);
+        setEvents(data);
+      } catch (error) {
+        console.error("Sanity fetch failed:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
     <div className="relative pt-20 pb-24 px-6 md:px-12 bg-creme min-h-screen overflow-hidden">
@@ -37,40 +49,47 @@ export default async function EventsPage() {
           <div className="w-32 h-0.5 bg-primary mx-auto mt-6" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.length > 0 ? (
-            events.map((event) => (
-              <div
-                key={event._id}
-                className="event-card-glass p-8 flex flex-col border-t-4 border-t-primary bg-white shadow-sm"
-              >
-                <h2 className="text-2xl font-serif font-bold text-maroon mb-3">
-                  {event.title}
-                </h2>
+        {/* 3. Handle Loading State */}
+        {loading ? (
+          <div className="text-center py-20 opacity-50 font-serif italic animate-pulse">
+            Loading sacred events...
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {events.length > 0 ? (
+              events.map((event) => (
+                <div
+                  key={event._id}
+                  className="event-card-glass p-8 flex flex-col border-t-4 border-t-primary bg-white shadow-sm transition-all hover:shadow-md"
+                >
+                  <h2 className="text-2xl font-serif font-bold text-maroon mb-3">
+                    {event.title}
+                  </h2>
 
-                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1 bg-orange-50 border border-orange-100 rounded-full w-fit">
-                  <p className="text-xs font-bold uppercase tracking-widest text-primary">
-                    {new Date(event.date).toLocaleDateString("en-IN", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
+                  <div className="inline-flex items-center gap-2 mb-5 px-3 py-1 bg-orange-50 border border-orange-100 rounded-full w-fit">
+                    <p className="text-xs font-bold uppercase tracking-widest text-primary">
+                      {new Date(event.date).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
+
+                  <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
+                    {event.description}
                   </p>
                 </div>
-
-                <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
-                  {event.description}
+              ))
+            ) : (
+              <div className="col-span-full text-center py-20 bg-white/50 rounded-3xl border border-dashed border-gray-300">
+                <p className="text-gray-500 font-serif italic">
+                  No upcoming events scheduled at this time.
                 </p>
               </div>
-            ))
-          ) : (
-            <div className="col-span-full text-center py-20 bg-white/50 rounded-3xl border border-dashed border-gray-300">
-              <p className="text-gray-500 font-serif italic">
-                No upcoming events scheduled at this time.
-              </p>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

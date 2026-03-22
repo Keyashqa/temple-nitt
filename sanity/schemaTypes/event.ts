@@ -22,11 +22,5 @@ export const event = defineType({
                         title: "Description",
                         type: "text",
                 }),
-                defineField({
-                        name: "image",
-                        title: "Event Image",
-                        type: "image",
-                        options: { hotspot: true },
-                }),
         ],
 });

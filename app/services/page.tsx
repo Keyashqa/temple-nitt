@@ -183,62 +183,6 @@ export default function PoojariServices() {
                 to receive your Prasadam.
               </p>
             </div>
-
-            {/* SBI Bank Card */}
-            <div className="lg:col-span-5">
-              <div className="relative w-full max-w-sm mx-auto aspect-[1.586/1] rounded-[1.5rem] bg-gradient-to-br from-[#1c3f95] via-[#2557c5] to-[#1c3f95] p-6 shadow-2xl overflow-hidden border border-white/20 group">
-                <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')]" />
-                <div className="absolute top-[-20px] right-[-20px] w-32 h-32 rounded-full border-[10px] border-white/10" />
-
-                <div className="relative flex justify-between items-start mb-8">
-                  <div className="w-12 h-9 bg-gradient-to-br from-amber-200 to-amber-500 rounded-md shadow-inner relative overflow-hidden">
-                    <div className="absolute inset-0 grid grid-cols-2 gap-1 opacity-30 border border-black/10">
-                      <div className="border-r border-b border-black/20"></div>
-                      <div className="border-b border-black/20"></div>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-white text-xs font-bold tracking-widest leading-none">
-                      SBI
-                    </p>
-                    <p className="text-white/60 text-[15px] uppercase tracking-tighter">
-                      NITT Branch
-                    </p>
-                  </div>
-                </div>
-
-                <div className="relative mb-6">
-                  <p className="text-white/50 text-[8px] uppercase tracking-[0.2em] mb-1">
-                    Account Number
-                  </p>
-                  <p className="text-white text-xl md:text-2xl font-mono tracking-[0.15em]">
-                    1002 3884 193
-                  </p>
-                </div>
-
-                <div className="relative flex justify-between items-end">
-                  <div className="space-y-1">
-                    <p className="text-white/50 text-[8px] uppercase tracking-[0.2em]">
-                      Beneficiary
-                    </p>
-                    <p className="text-white text-[10px] font-bold tracking-wide uppercase">
-                      Sri Vidya Ganapathi <br /> Seva Samithi
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-white/50 text-[8px] uppercase tracking-[0.2em] mb-1">
-                      IFSC Code
-                    </p>
-                    <p className="text-white text-[18px] font-mono font-bold tracking-widest uppercase">
-                      SBIN0001617
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <p className="mt-6 text-center text-[10px] text-gray-400 uppercase tracking-[0.4em] font-bold">
-                Official Sannidhi Account
-              </p>
-            </div>
           </div>
         </section>
 

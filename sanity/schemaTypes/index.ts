@@ -1,5 +1,5 @@
 import { event } from "./event";
-import { article } from "./article";
-import { activity } from "./activity";
+import { article } from "./article"; 
+import { gallery } from "./gallery";
 
-export const schemaTypes = [event, article, activity];
+export const schemaTypes = [event, article, gallery];
