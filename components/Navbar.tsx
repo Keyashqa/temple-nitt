@@ -7,14 +7,16 @@ const allLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Events", href: "/events" },
+  { name: "Kumbabishekam", href: "/kumbabishekam" },
   { name: "Temple Committee", href: "/staff" },
+  { name: "Saraswati Hall", href: "/saraswati_hall" },
   { name: "History", href: "/history" },
   { name: "Articles", href: "/articles" },
   { name: "Timings", href: "/timings" },
   { name: "Pooja Services", href: "/services" },
   { name: "Special Pooja Calendar 2026", href: "/calendar" },
-  { name: "Balavikas Classes [TBD]", href: "/classes" },
-  { name: "Gallery [TBD]", href: "/gallery" },
+  { name: "Balavikas Classes", href: "/classes" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ];
 

@@ -47,7 +47,7 @@ const committee = [
     name: "M Jayaram Gurukkal",
     role: "Gurukkal",
     desc: "Overseeing the Annadanam and Gau Samrakshana initiatives.",
-    image: "/gallery1.jpg",
+    image: "/jayaram.jpeg",
   },
 ];
 

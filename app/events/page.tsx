@@ -7,7 +7,7 @@ type Event = {
   _id: string;
   title: string;
   description: string;
-  date: string;
+  timing: string;
 };
 
 const QUERY = `*[_type == "event"] | order(date asc)`;
@@ -44,7 +44,7 @@ export default function EventsPage() {
             Sacred Gathering
           </h2>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-maroon mb-4">
-            Temple Events & Poojas
+            Temple Events 
           </h1>
           <div className="w-32 h-0.5 bg-primary mx-auto mt-6" />
         </div>
@@ -68,11 +68,7 @@ export default function EventsPage() {
 
                   <div className="inline-flex items-center gap-2 mb-5 px-3 py-1 bg-orange-50 border border-orange-100 rounded-full w-fit">
                     <p className="text-xs font-bold uppercase tracking-widest text-primary">
-                      {new Date(event.date).toLocaleDateString("en-IN", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
+                      {event.timing}
                     </p>
                   </div>
 

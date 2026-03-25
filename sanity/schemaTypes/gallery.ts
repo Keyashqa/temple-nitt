@@ -19,6 +19,10 @@ export const gallery = defineType({
                                 list: [
                                         { title: "Temple", value: "Temple" },
                                         { title: "Kumbabishekam", value: "Kumbabishekam" }, 
+                                        { title: "Balavikaas", value: "Balavikaas"},
+                                        { title: "Navaratri 2025", value: "Navaratri 2025" },
+                                        { title: "Margazhi 2025", value: "Margazhi 2025" },
+                                        { title: "Balalayam", value: "Balalayam" },
                                 ],
                         },
                         validation: (Rule) => Rule.required(),

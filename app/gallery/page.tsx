@@ -20,7 +20,7 @@ type GalleryImage = {
 };
 
 const QUERY = `*[_type == "gallery"] | order(_createdAt desc)`;
-const categories = ["Kumbabishekam", "Temple"];
+const categories = ["Kumbabishekam", "Temple", "Balavikaas", "Balalayam", "Navaratri 2025", "Margazhi 2025"];
 
 export default function TempleBackgroundGallery() {
   const [allImages, setAllImages] = useState<GalleryImage[]>([]);

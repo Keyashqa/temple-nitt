@@ -12,9 +12,10 @@ export const event = defineType({
                         validation: (Rule) => Rule.required(),
                 }),
                 defineField({
-                        name: "date",
-                        title: "Event Date",
-                        type: "date",
+                        name: "timing",
+                        title: "Timing",
+                        type: "string",
+                        placeholder: "e.g., Every Evening or 6:00 AM",
                         validation: (Rule) => Rule.required(),
                 }),
                 defineField({
