@@ -41,10 +41,10 @@ export default function EventsPage() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-xs uppercase tracking-[0.3em] font-bold text-primary mb-2">
-            Sacred Gathering
+            Satsang  
           </h2>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-maroon mb-4">
-            Temple Events 
+             Activities
           </h1>
           <div className="w-32 h-0.5 bg-primary mx-auto mt-6" />
         </div>

@@ -9,13 +9,14 @@ const allLinks = [
   { name: "Events", href: "/events" },
   { name: "Kumbabishekam", href: "/kumbabishekam" },
   { name: "Temple Committee", href: "/staff" },
-  { name: "Saraswati Hall", href: "/saraswati_hall" },
+  { name: "Saraswati Mandapam", href: "/saraswati_hall" },
   { name: "History", href: "/history" },
   { name: "Articles", href: "/articles" },
   { name: "Timings", href: "/timings" },
   { name: "Pooja Services", href: "/services" },
   { name: "Special Pooja Calendar 2026", href: "/calendar" },
   { name: "Balavikas Classes", href: "/classes" },
+  { name: "Library", href: "/library" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ];
@@ -62,8 +63,8 @@ export default function Navbar() {
           <span className="text-xl font-serif font-bold text-primary tracking-tight group-hover:text-primary/80 transition-colors">
             NIT Trichy
           </span>
-          <span className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">
-            Sri Vidya Ganapathi Temple
+          <span className="text-[9px] uppercase tracking-[0.2em] text-red-900 font-bold">
+            Sri Vidhya Ganapathi Temple
           </span>
         </Link>
 

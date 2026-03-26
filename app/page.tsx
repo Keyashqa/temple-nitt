@@ -147,15 +147,79 @@ export default function HomePage() {
               A Legacy Since 1968
             </h3>
           </div>
-          <div className="prose prose-lg text-gray-600 font-light leading-relaxed italic">
+          <div className="prose prose-lg text-gray-600 font-light leading-relaxed italic text-justify">
             <p className="mb-6">
-              Way back in 1968, when the first batch of then Regional
-              Engineering College, Trichy (RECT) was still studying, a mishap
-              occurred that highlighted the need to install the deity of
-              <span className="text-gray-900 font-medium"> Ganapathi</span>, the
-              remover of all obstacles...
+              Way back in{" "}
+              <span className="text-red-900 font-semibold italic">1968</span>,
+              when the first batch of the then{" "}
+              <span className="text-red-900 font-medium">
+                Regional Engineering College, Trichy (RECT)
+              </span>{" "}
+              was still in study, a mishap occurred that highlighted the
+              spiritual need to install a deity of{" "}
+              <span className="text-gray-950 font-medium">Lord Ganapathi</span>
+              —the remover of all obstacles. This was felt deeply, as the
+              college campus was built by clearing several villages and their
+              local shrines.
             </p>
-            {/* Rest of your content remains here */}
+            <p className="mb-6">
+              During those early years, a group of dedicated students led by{" "}
+              <span className="text-gray-900 font-semibold">
+                Mr. G.V. Raman
+              </span>{" "}
+              met with the Principal to propose the installation. Receiving
+              immediate clearance, they were allocated space near the garage of
+              that time. Under the initiative of the future{" "}
+              <span className="text-gray-900 font-semibold">
+                Capt. Srinivasan
+              </span>
+              , the students traveled to Trichy in search of a Ganesha idol.
+            </p>
+            <p className="mb-6">
+              A beautiful idol was found and purchased for{" "}
+              <span className="font-medium text-gray-900">Rs. 300</span>. As{" "}
+              <span className="text-gray-950 font-medium italic">
+                Vinayaka Chaturthi
+              </span>{" "}
+              approached, the then Assistant Registrar,{" "}
+              <span className="text-gray-900 font-semibold">
+                Mr. Nagashesaiah
+              </span>
+              , helped construct a platform and a modest shed. The Ganesha was
+              formally installed at the location now identified in front of the
+              current{" "}
+              <span className="text-gray-950 font-medium">
+                Shri Vidya Ganapathi Sannidhi
+              </span>
+              .
+            </p>
+            <p className="mb-6">
+              The <span className="italic">Gurukkal</span> from the{" "}
+              <span className="text-gray-900 font-semibold">
+                Ucchi Pillaiyar Temple
+              </span>{" "}
+              was brought to perform the rituals, and a sacred{" "}
+              <span className="text-orange-800 font-medium">
+                Sandalwood Paste (Sandana Kappu) Alankaram
+              </span>{" "}
+              was offered to the deity. From that day forward, the student
+              community began contributing one or two rupees monthly to maintain
+              the temple.
+            </p>
+            <p className="">
+              Contractors{" "}
+              <span className="text-gray-900 font-semibold">
+                Raghava and Veera
+              </span>{" "}
+              provided the structural frame, while students paid for the
+              finishing and painting. The{" "}
+              <span className="text-green-800 font-medium">
+                Campus Garden Club
+              </span>{" "}
+              joined the effort by planting a variety of flower-bearing shrubs,
+              which were lovingly watered and tended to by the students every
+              single day.
+            </p>
           </div>
         </div>
       </section>

@@ -72,14 +72,19 @@ export default function HistoryPage() {
                 }`}
               >
                 <div className="w-full md:w-[45%]">
-                  <div className="divine-glass p-8 rounded-3xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/5 group-hover:-translate-y-1 border border-white/40">
-                    <span className="text-3xl font-serif font-bold text-primary mb-2 block tracking-tight">
+                  <div className="bg-black p-8 rounded-3xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-black/20 border border-white/10 group-hover:border-white/20">
+                    {/* Year - Bright Accent */}
+                    <span className="text-3xl font-serif font-bold text-accent mb-2 block tracking-tight">
                       {event.year}
                     </span>
-                    <h3 className="text-xl font-bold text-gray-950 mb-3">
+
+                    {/* Title - Pure White */}
+                    <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
                       {event.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">
+
+                    {/* Description - Slightly muted white for better readability */}
+                    <p className="text-gray-300 leading-relaxed text-sm font-light italic">
                       {event.desc}
                     </p>
                   </div>
@@ -103,8 +108,8 @@ export default function HistoryPage() {
             </h4>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Our Sivalingam is a <strong>Banalingam</strong>, a Swayambu stone
-              from the Narmada River. Representing the form of the formless,
-              it blend&apos;s male energy (knowledge) with female energy (wisdom).
+              from the Narmada River. Representing the form of the formless, it
+              blend&apos;s male energy (knowledge) with female energy (wisdom).
               Worshipping this single linga is said to grant the benefits of
               worshipping a crore of others, bringing success to all tasks of
               the day.

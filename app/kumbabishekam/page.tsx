@@ -233,7 +233,7 @@ export default function KumbabishekamPage() {
                   ))}
                 </tbody>
               </table>
-            </div> 
+            </div>
           </div>
         </div>
       </section>
@@ -253,18 +253,19 @@ export default function KumbabishekamPage() {
               {
                 title: "English Invitation",
                 lang: "English Version",
-                file: "/invitation-en.pdf",
+                file: "/Eng.pdf",
               },
               {
                 title: "Tamil Invitation",
                 lang: "Tamil Version",
-                file: "/invitation-ta.pdf",
+                file: "/Tam.pdf",
               },
             ].map((pdf, idx) => (
               <a
                 key={idx}
                 href={pdf.file}
-                download
+                target="_blank" // Opens in a new tab
+                rel="noopener noreferrer" // Security best practice
                 className="group flex items-center justify-between p-8 bg-white rounded-3xl border border-accent/5 hover:border-accent/30 hover:shadow-xl transition-all duration-500"
               >
                 <div>
@@ -276,7 +277,8 @@ export default function KumbabishekamPage() {
                   </h4>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-creme flex items-center justify-center text-maroon group-hover:bg-maroon group-hover:text-white transition-colors duration-300">
-                  <span className="text-xl">↓</span>
+                  {/* Changed icon to an arrow pointing right/up to indicate a link opening */}
+                  <span className="text-xl">↗</span>
                 </div>
               </a>
             ))}

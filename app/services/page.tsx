@@ -92,18 +92,21 @@ export default function PoojariServices() {
                 </p>
 
                 <div className="space-y-4 mb-10 max-w-md">
-                  <h4 className="text-xs uppercase tracking-widest font-bold text-gray-400">
+                  <h4 className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-400">
                     Sponsorship Details
                   </h4>
                   {mandalaCharges.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex justify-between items-center py-3 border-b border-orange-100/50"
+                      className="flex justify-between items-start gap-4 py-3 border-b border-orange-100/50"
                     >
-                      <span className="text-gray-700 font-serif">
+                      {/* Type - Allow it to wrap if long, but keep it font-serif */}
+                      <span className="text-gray-700 font-serif text-sm md:text-base leading-tight">
                         {item.type}
                       </span>
-                      <span className="font-bold text-primary">
+
+                      {/* Price - Force one line and align right */}
+                      <span className="font-bold text-primary whitespace-nowrap text-sm md:text-base shrink-0">
                         {item.price}
                       </span>
                     </div>
@@ -277,40 +280,48 @@ export default function PoojariServices() {
               <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 text-center italic">
                 Kindly transfer contributions to the Temple bank account below
                 and inform{" "}
-                <span className="font-semibold text-gray-900">
+                <span className="font-semibold text-gray-900 whitespace-nowrap">
                   Mr. R. Gururaj
                 </span>{" "}
                 via email at{" "}
-                <span className="font-medium text-primary break-all">
+                <span className="font-medium text-primary whitespace-nowrap text-[12px] sm:text-sm md:text-base">
                   srividyaganapathitemplenitt@gmail.com
                 </span>
               </p>
 
               {/* Account Details */}
-              <div className="space-y-0 text-1xl">
-                <div className="flex justify-between pb-3">
-                  <span className="text-gray-500">Account Name</span>
+              <div className="space-y-3 text-[13px] sm:text-base">
+                <div className="flex items-start pb-2 border-b border-gray-50">
+                  <span className="text-gray-500 w-32 sm:w-40 shrink-0">
+                    Account Name
+                  </span>
                   <span className="font-semibold text-gray-900">
                     Sri Vidya Ganapathi Seva Samithi
                   </span>
                 </div>
 
-                <div className="flex justify-between pb-3">
-                  <span className="text-gray-500">Account Number</span>
+                <div className="flex items-center pb-2 border-b border-gray-50">
+                  <span className="text-gray-500 w-32 sm:w-40 shrink-0">
+                    Account Number
+                  </span>
                   <span className="font-semibold tracking-wider text-gray-900">
                     10023884193
                   </span>
                 </div>
 
-                <div className="flex justify-between pb-3">
-                  <span className="text-gray-500">Bank</span>
+                <div className="flex items-center pb-2 border-b border-gray-50">
+                  <span className="text-gray-500 w-32 sm:w-40 shrink-0">
+                    Bank
+                  </span>
                   <span className="font-semibold text-gray-900">
                     SBI, NITT Branch
                   </span>
                 </div>
 
-                <div className="flex justify-between">
-                  <span className="text-gray-500">IFSC Code</span>
+                <div className="flex items-center">
+                  <span className="text-gray-500 w-32 sm:w-40 shrink-0">
+                    IFSC Code
+                  </span>
                   <span className="font-semibold text-gray-900">
                     SBIN0001617
                   </span>

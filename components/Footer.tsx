@@ -10,7 +10,7 @@ export default function Footer() {
         {/* Brand Section */}
         <div className="space-y-4">
           <h3 className="text-white text-2xl font-serif font-bold tracking-tight">
-            NIT Trichy{" "}
+            Sri Vidhya Ganapathi{" "}
             <span className="text-orange-500/80 italic font-medium">
               Temple
             </span>
@@ -113,7 +113,7 @@ export default function Footer() {
                 href="/saraswati_hall"
                 className="hover:text-orange-400 transition-colors duration-300 block"
               >
-                Saraswati Hall
+                Saraswati Mandapam
               </Link>
             </li>
             <li>
@@ -122,6 +122,14 @@ export default function Footer() {
                 className="hover:text-orange-400 transition-colors duration-300 block"
               >
                 Gallery
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/library"
+                className="hover:text-orange-400 transition-colors duration-300 block"
+              >
+                Library
               </Link>
             </li>
             {/* New links added below will automatically fill the two columns */}
@@ -161,7 +169,6 @@ export default function Footer() {
       {/* Bottom Copyright Area */}
       <div className="border-t border-gray-900 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-medium text-gray-600">
         <p>© 2026 NIT Trichy Temple. All Rights Reserved.</p>
-        
       </div>
     </footer>
   );
