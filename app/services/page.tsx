@@ -281,7 +281,7 @@ export default function PoojariServices() {
                 Kindly transfer contributions to the Temple bank account below
                 and inform{" "}
                 <span className="font-semibold text-gray-900 whitespace-nowrap">
-                  Mr. R. Gururaj
+                  Temple Committee
                 </span>{" "}
                 via email at{" "}
                 <span className="font-medium text-primary whitespace-nowrap text-[12px] sm:text-sm md:text-base">
@@ -335,7 +335,7 @@ export default function PoojariServices() {
         <footer className="mt-40 text-center relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
           <div className="pt-12 flex flex-col items-center gap-4">
-            <div className="text-5xl font-serif text-primary/10 select-none hover:text-primary/30 transition-colors duration-1000">
+            <div className="text-6xl py-5 text-red-900 opacity-70 select-none   cursor-default  ">
               ॐ
             </div>
             <p className="text-[11px] text-gray-400 uppercase tracking-[0.5em] font-bold">

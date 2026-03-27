@@ -81,9 +81,9 @@ export default function SaraswatiHall() {
 
           <p className="text-gray-600 leading-relaxed font-light text-lg italic">
             Amidst the serene environs of the Shri Vidya Ganapathi Temple, there
-            is a multi purpose Mandapam. With the blessings of Saraswati Ma,
-            this is a center for Spiritual art - with the wall painting of Ma
-            Saraswati done by students, this Mandapam hosts:
+            is a multi purpose Mandapam, with the blessings of Saraswati Ma.
+            This is a center for Spiritual art with the wall painting of Ma
+            Saraswati done by students. This Mandapam hosts:
           </p>
 
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-sm font-medium text-gray-700">

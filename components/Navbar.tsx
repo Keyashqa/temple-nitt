@@ -61,10 +61,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex flex-col group">
           <span className="text-xl font-serif font-bold text-primary tracking-tight group-hover:text-primary/80 transition-colors">
-            NIT Trichy
-          </span>
-          <span className="text-[9px] uppercase tracking-[0.2em] text-red-900 font-bold">
             Sri Vidhya Ganapathi Temple
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.2em] text-grey-900 font-bold">
+            NIT Trichy
           </span>
         </Link>
 

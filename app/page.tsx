@@ -92,44 +92,48 @@ export default function HomePage() {
       )}
 
       {/* --- EXISTING HOME CONTENT --- */}
-      <section className="relative py-20 bg-[#faf7f2] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12">
-          <div className="z-10">
-            <h2 className="text-[var(--primary)] font-bold uppercase tracking-widest text-sm mb-4">
+      <section className="relative py-12 md:py-20 bg-[#faf7f2] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-10 md:gap-12">
+          {/* Left Content */}
+          <div className="z-10 text-center md:text-left order-2 md:order-1">
+            <h2 className="text-[var(--primary)] font-bold uppercase tracking-widest text-xs md:text-sm mb-4">
               Sri Vidya Ganapathi Temple
             </h2>
-            <h1 className="text-5xl md:text-6xl font-serif text-gray-900 leading-tight mb-6">
+            <h1 className="text-4xl md:text-6xl font-serif text-gray-900 leading-tight mb-6">
               Preserving our <br />
               <span className="italic">Dharma & Heritage</span>
             </h1>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+            <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
               Established in 1968, the temple stands as a guardian of the
               campus, removing obstacles and fostering spiritual peace through
               Veda Rakshanam and traditional Seva.
             </p>
-            <div className="flex gap-1">
+
+            {/* Responsive Button Group */}
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-2">
               <Link
                 href="/about"
-                className="border border-gray-300 px-8 py-4 font-bold rounded-sm hover:bg-gray-50 transition cursor-pointer"
+                className="border border-gray-300 px-6 py-3 md:px-8 md:py-4 text-[10px] md:text-xs font-bold rounded-sm hover:bg-gray-50 transition text-center"
               >
                 VIEW MORE
               </Link>
               <Link
                 href="/kumbabishekam"
-                className="border border-gray-300 px-8 py-4 font-bold rounded-sm hover:bg-gray-50 transition cursor-pointer"
+                className="border border-gray-300 px-6 py-3 md:px-8 md:py-4 text-[10px] md:text-xs font-bold rounded-sm hover:bg-gray-50 transition text-center"
               >
                 KUMBABISHEKAM
               </Link>
               <Link
                 href="/services"
-                className="border border-gray-300 px-8 py-4 font-bold rounded-sm hover:bg-gray-50 transition cursor-pointer"
+                className="border border-gray-300 px-6 py-3 md:px-8 md:py-4 text-[10px] md:text-xs font-bold rounded-sm hover:bg-gray-50 transition text-center"
               >
                 MANDALA POOJA
               </Link>
             </div>
           </div>
 
-          <div className="relative h-[500px] w-full bg-gray-200 rounded-tr-[100px] rounded-bl-[100px] overflow-hidden shadow-2xl">
+          {/* Right Image */}
+          <div className="relative h-[300px] md:h-[500px] w-full bg-gray-200 rounded-tr-[60px] md:rounded-tr-[100px] rounded-bl-[60px] md:rounded-bl-[100px] overflow-hidden shadow-2xl order-1 md:order-2">
             <div className="absolute inset-0 bg-[url('/temple.jpg')] bg-cover bg-center" />
             <div className="absolute inset-0 bg-orange-900/10 mix-blend-multiply" />
           </div>
@@ -226,36 +230,33 @@ export default function HomePage() {
 
       {/* Quick Stats/Services */}
       <section className="py-16 bg-[#faf7f2] border-t border-b border-orange-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24 text-center">
+          {/* Item 1 */}
+          <div className="flex flex-col items-center min-w-[120px]">
             <p className="text-3xl font-serif font-bold text-[var(--primary)]">
               1968
             </p>
-            <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
+            <p className="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
               Established
             </p>
           </div>
-          <div>
+
+          {/* Item 2 */}
+          <div className="flex flex-col items-center min-w-[120px]">
             <p className="text-3xl font-serif font-bold text-[var(--primary)]">
               2026
             </p>
-            <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
+            <p className="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
               Upcoming Events
             </p>
           </div>
-          <div>
-            <p className="text-3xl font-serif font-bold text-[var(--primary)]">
-              Gau
-            </p>
-            <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
-              Samrakshanam
-            </p>
-          </div>
-          <div>
+
+          {/* Item 3 */}
+          <div className="flex flex-col items-center min-w-[120px]">
             <p className="text-3xl font-serif font-bold text-[var(--primary)]">
               Dharma
             </p>
-            <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
+            <p className="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">
               Seva
             </p>
           </div>

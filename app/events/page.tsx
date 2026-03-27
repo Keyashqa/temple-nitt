@@ -39,12 +39,9 @@ export default function EventsPage() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] z-[-1]" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-xs uppercase tracking-[0.3em] font-bold text-primary mb-2">
-            Satsang  
-          </h2>
+        <div className="text-center mb-16"> 
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-maroon mb-4">
-             Activities
+            Satsang Activities
           </h1>
           <div className="w-32 h-0.5 bg-primary mx-auto mt-6" />
         </div>
