@@ -1,49 +1,169 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { client } from "@/sanity/lib/client"; // Ensure your Sanity client is configured here
 
-// Placeholder data for the 56 saints. 
-// You can populate this list with the actual names and bios.
-const saintsData = [
+// Static mapping for IDs and Image paths - Region removed
+const staticSaints = [
+  { id: 1, name: "Vyasar", image: "/1 Vyasar.jpeg" },
+  { id: 2, name: "Adi Sankara", image: "/2 Adi Sankara.jpeg" },
+  { id: 3, name: "Mahaperiyava", image: "/3 Mahaperiyava.jpeg" },
+  { id: 4, name: "Sringeri Periyava", image: "/4 Sringeri Periyava.jpeg" },
+  { id: 5, name: "Ramanujar", image: "/5 Ramanujar.jpeg" },
+  { id: 6, name: "Madhvacharya", image: "/6 Madhvacharya.jpeg" },
+  { id: 7, name: "Raghavendrar", image: "/7 Raghavendrar.jpeg" },
+  { id: 8, name: "Buddha", image: "/8 Buddha.jpeg" },
   {
-    id: 1,
-    name: "Vyasar",
-    image: "/vyasar.jpeg", 
-    bio: "The Sage of Arunachala who taught the path of Self-Enquiry ('Who am I?'). He embodied the silence that speaks louder than words. He taught that Guru's Grace is always there and realization is the result of that Grace.",
-    region: "Tamil Nadu",
+    id: 9,
+    name: "Bhagwan Ramana Maharishi",
+    image: "/9 Bhagwan Ramana Maharishi.jpeg",
+  },
+  { id: 10, name: "Seshadri Swamigal", image: "/10 Seshadri Swamigal.jpeg" },
+  {
+    id: 11,
+    name: "Sadasiva Bhahmendra",
+    image: "/11 Sadasiva Bhahmendra.jpeg",
+  },
+  { id: 12, name: "Jnaneshwar", image: "/12 Jnaneshwar.jpeg" },
+  {
+    id: 13,
+    name: "Shri Chaitanya Mahaprabhu",
+    image: "/13 Shri Chaitanya Mahaprabhu.jpeg",
+  },
+  { id: 14, name: "Meerabai", image: "/14 Meerabai.jpeg" },
+  { id: 15, name: "Purandaradasar", image: "/15 Purandaradasar.jpeg" },
+  { id: 16, name: "Sant Thukaram", image: "/16 Sant Thukaram.jpeg" },
+  {
+    id: 17,
+    name: "Ramakrishna Paramahamsar",
+    image: "/17 Ramakrishna Paramahamsar.jpeg",
+  },
+  { id: 18, name: "Swami Vivekananda", image: "/18 Swami Vivekananda.jpeg" },
+  { id: 19, name: "Sri Guru Babaji", image: "/19 Sri Guru Babaji.jpeg" },
+  { id: 20, name: "Guru Nanak", image: "/20 Guru Nanak.jpeg" },
+  { id: 21, name: "Narayana Guru", image: "/21 Narayana Guru.jpeg" },
+  { id: 22, name: "Arunagirinathar", image: "/22 Arunagirinathar.jpeg" },
+  { id: 23, name: "Shridi Sai Baba", image: "/23 Shridi Sai Baba.jpeg" },
+  { id: 24, name: "Sant Kabirdas", image: "/24 Sant Kabirdas.jpeg" },
+  { id: 25, name: "Avvaiyar", image: "/25 Avvaiyar.jpeg" },
+  { id: 26, name: "Thiruvalluvar", image: "/26 Thiruvalluvar.jpeg" },
+  { id: 27, name: "Vallalar", image: "/27 Vallalar.jpeg" },
+  { id: 28, name: "Pamban Swamigal", image: "/28 Pamban Swamigal.jpeg" },
+  { id: 29, name: "Nalvar", image: "/29 Nalvar.jpeg" },
+  { id: 30, name: "Surdas", image: "/30 Surdas.jpeg" },
+  { id: 31, name: "Sant Namdev", image: "/31 Sant Namdev.jpeg" },
+  { id: 32, name: "Samarth Ramdas", image: "/32 Samarth Ramdas.jpeg" },
+  { id: 33, name: "Agasthiyar", image: "/33 Agasthiyar.jpeg" },
+  {
+    id: 34,
+    name: "Avudai Akkal with Guru Sreedhara Ayyaval",
+    image: "/34 Avudai Akkal with Guru Sreedhara Ayyaval.jpeg",
   },
   {
-    id: 2,
-    name: "Adi Sankara",
-    image: "/sankara.jpeg",
-    bio: "The great philosopher and theologian from India who consolidated the doctrine of Advaita Vedanta. He established four mathas in the four corners of India to preserve and propagate the Vedas.",
-    region: "Kerala / All India",
+    id: 35,
+    name: "Vallabacharya Mahaprabhu",
+    image: "/35 Vallabacharya Mahaprabhu.jpeg",
   },
-  // Add remaining saints here...
+  { id: 36, name: "Andal", image: "/36 Andal.jpeg" },
+  { id: 37, name: "Badrachala Ramadas", image: "/37 Badrachala Ramadas.jpeg" },
+  { id: 38, name: "Thulasidas", image: "/38 Thulasidas.jpeg" },
+  {
+    id: 39,
+    name: "Yogini Lalleshwari of Kashmir",
+    image: "/39 Yogini Lalleshwari of Kashmir.jpeg",
+  },
+  { id: 40, name: "Akka Mahadevi", image: "/40 Akka Mahadevi.jpeg" },
+  { id: 41, name: "Pattinathar", image: "/41 Pattinathar.jpeg" },
+  { id: 42, name: "Sarada Devi", image: "/42 Sarada Devi.jpeg" },
+  { id: 43, name: "Saint Thyagaraja", image: "/43 Saint Thyagaraja.jpeg" },
+  { id: 44, name: "Sekkizhar", image: "/44 Sekkizhar.jpeg" },
+  {
+    id: 45,
+    name: "Bhagavan Nama Bhodendral Sridhara Ayyaval Marudanallur Sadguru Swamigal",
+    image:
+      "/45 Bhagavan Nama Bhodendral Sridhara Ayyaval Marudanallur Sadguru Swamigal.jpeg",
+  },
+  { id: 46, name: "Vedanta Desikar", image: "/46 Vedanta Desikar.jpeg" },
+  { id: 47, name: "Manavala Mamunigal", image: "/47 Manavala Mamunigal.jpeg" },
+  { id: 48, name: "Eknath", image: "/48 Eknath.jpeg" },
+  { id: 49, name: "Aurobindo", image: "/49 Aurobindo.jpeg" },
+  { id: 50, name: "Thirumoolar", image: "/50 Thirumoolar.jpeg" },
+  { id: 51, name: "Nimbarkar", image: "/51 Nimbarkar.jpeg" },
+  { id: 52, name: "Srimanta Sankardev", image: "/52 Srimanta Sankardev.jpeg" },
+  { id: 53, name: "Mahavira", image: "/53 Mahavira.jpeg" },
+  { id: 54, name: "Chinmayananda", image: "/54 Chinmayananda.jpeg" },
+  { id: 55, name: "Patanjali", image: "/55 Patanjali.jpeg" },
+  { id: 56, name: "Basavanna", image: "/56 Basavanna.jpeg" },
 ];
 
 const slokas = [
   {
-    sanskrit: "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः। गुरुः साक्षात्परं ब्रह्म तस्मै श्रीगुरवे नमः।।",
-    translation: "Salutations to that Guru who is himself Brahma, Vishnu, Maheshwara and the ultimate Brahmam!",
+    sanskrit:
+      "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः। गुरुः साक्षात्परं ब्रह्म तस्मै श्रीगुरवे नमः।।",
+    translation:
+      "Salutations to that Guru who is himself Brahma, Vishnu, Maheshwara and the ultimate Brahmam!",
   },
   {
-    sanskrit: "गुशब्दस्त्वन्धकारः स्यात् रुशब्दस्तन्निरोधकः। अन्धकार निरोधित्वात् गुरुरित्यभिधीयते।।",
-    translation: "The letter 'gu' stands for darkness/ignorance; and 'ru' stands for dispeller. He is called a Guru, since he dispels the ignorance of the students.",
+    sanskrit:
+      "गुशब्दस्त्वन्धकारः स्यात् रुशब्दस्तन्निरोधकः। अन्धकार निरोधित्वात् गुरुरित्यभिधीयते।।",
+    translation:
+      "The letter 'gu' stands for darkness/ignorance; and 'ru' stands for dispeller. He is called a Guru, since he dispels the ignorance of the students.",
   },
   {
-    sanskrit: "अज्ञानतिमिरान्धस्य ज्ञानाञ्जन शलाकया। चक्षुरुन्मीलितं येन तस्मै श्रीगुरवे नमः।।",
-    translation: "Salutations to that Guru who has opened the eyes blinded by ignorance by applying the divine Kajal (collyrium) of knowledge.",
+    sanskrit:
+      "अज्ञानतिमिरान्धस्य ज्ञानाञ्जन शलाकया। चक्षुरुन्मीलितं येन तस्मै श्रीगुरवे नमः।।",
+    translation:
+      "Salutations to that Guru who has opened the eyes blinded by ignorance by applying the divine Kajal (collyrium) of knowledge.",
   },
   {
-    sanskrit: "न गुरोरधिकं तत्त्वं न गुरोरघिकं तपः। तत्तंवज्ञानात् परं नास्ति तस्मै श्रीगुरवे नमः।।",
-    translation: "Salutations to the guru beyond whom there is no truth; nor is there any meditation.",
+    sanskrit:
+      "न गुरोरधिकं तत्त्वं न गुरोरघिकं तपः। तत्तंवज्ञानात् परं नास्ति तस्मै श्रीगुरवे नमः।।",
+    translation:
+      "Salutations to the guru beyond whom there is no truth; nor is there any meditation.",
   },
 ];
 
 export default function SaraswatiHall() {
-  const [selectedSaint, setSelectedSaint] = useState<null | typeof saintsData[0]>(null);
+  const [saints, setSaints] = useState<any[]>([]);
+  const [selectedSaint, setSelectedSaint] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBios = async () => {
+      try {
+        // Fetch bio based on saintName from Sanity
+        const sanityData = await client.fetch(
+          `*[_type == "saint"]{saintName, bio}`,
+        );
+
+        // Merge bios into static data
+        const mergedData = staticSaints.map((item) => {
+          const matched = sanityData.find(
+            (s: any) => s.saintName === item.name,
+          );
+          return {
+            ...item,
+            bio: matched ? matched.bio : "Grace details coming soon...",
+          };
+        });
+
+        setSaints(mergedData);
+      } catch (error) {
+        console.error("Error fetching Sanity bios:", error);
+        setSaints(
+          staticSaints.map((s) => ({
+            ...s,
+            bio: "Grace details coming soon...",
+          })),
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBios();
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#fffcf7] text-slate-900 overflow-x-hidden font-sans">
@@ -105,7 +225,6 @@ export default function SaraswatiHall() {
 
         <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white group bg-white">
           <div className="absolute inset-0 bg-maroon/10 z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
-
           <Image
             src="/m1.jpeg"
             alt="Saraswati Mandapam"
@@ -117,7 +236,6 @@ export default function SaraswatiHall() {
 
         <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white group bg-white">
           <div className="absolute inset-0 bg-maroon/10 z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
-
           <Image
             src="/m2.jpeg"
             alt="Saraswati Mandapam"
@@ -129,7 +247,6 @@ export default function SaraswatiHall() {
 
         <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white group bg-white">
           <div className="absolute inset-0 bg-maroon/10 z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
-
           <Image
             src="/m3.jpeg"
             alt="Saraswati Mandapam"
@@ -143,7 +260,7 @@ export default function SaraswatiHall() {
       {/* --- 3. GURU TATTVA SLOKAS --- */}
       <section className="py-24 bg-creme/40 border-y border-accent/10 relative">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="text-6xl py-5 text-red-900 opacity-70 select-none   cursor-default  ">
+          <div className="text-6xl py-5 text-red-900 opacity-70 select-none cursor-default">
             ॐ
           </div>
           <div className="space-y-16">
@@ -176,27 +293,39 @@ export default function SaraswatiHall() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8">
-          {saintsData.map((saint) => (
-            <div
-              key={saint.id}
-              onClick={() => setSelectedSaint(saint)}
-              className="group cursor-pointer text-center"
-            >
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-accent transition-all duration-500 shadow-sm group-hover:shadow-2xl group-hover:-translate-y-3">
-                <Image
-                  src={saint.image}
-                  alt={saint.name}
-                  fill
-                  className="object-contain group-hover:grayscale-0 transition-all duration-700 brightness-95 group-hover:brightness-100"
-                />
+        {loading ? (
+          <div className="text-center py-20 italic animate-pulse">
+            Loading Gallery of Grace...
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+            {saints.map((saint) => (
+              <div
+                key={saint.id} 
+                className="group relative"
+              >
+                <div className="relative aspect-[3/4] bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 group-hover:border-accent">
+                  <Image
+                    src={saint.image}
+                    alt={saint.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-maroon/80 opacity-0 group-hover:opacity-90 transition-opacity duration-500 flex flex-col justify-end p-6 backdrop-blur-sm">
+                    <p className="text-white text-xs font-light italic leading-relaxed line-clamp-4 mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      &quot;{saint.bio}&quot;
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 group-hover:text-maroon transition-colors">
+                    {saint.name}
+                  </p>
+                </div>
               </div>
-              <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-maroon transition-colors px-2 leading-tight">
-                {saint.name}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* --- 5. RAMANA QUOTE SECTION --- */}
@@ -211,7 +340,7 @@ export default function SaraswatiHall() {
             Bhagavan Ramana Maharshi
           </h4>
           <blockquote className="text-3xl md:text-6xl font-serif text-white italic leading-[1.1] mb-12">
-            &quot;A Guru is not the physical form. Hence His contact remains
+            &quot;A Guru is not the physical form. Hence his contact remains
             even after the physical form of the Guru vanishes.&quot;
           </blockquote>
           <div className="w-20 h-px bg-accent/30 mx-auto mb-10" />
@@ -221,7 +350,7 @@ export default function SaraswatiHall() {
         </div>
       </section>
 
-      {/* --- 6. SAINT DETAIL MODAL (OVERLAY) --- */}
+      {/* --- 6. SAINT DETAIL MODAL --- */}
       {selectedSaint && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 backdrop-blur-xl bg-maroon/40 animate-in fade-in duration-500">
           <div
@@ -247,9 +376,6 @@ export default function SaraswatiHall() {
             </div>
 
             <div className="w-full md:w-1/2 p-10 md:p-20 flex flex-col justify-center bg-gradient-to-br from-white to-orange-50/30">
-              <span className="text-[10px] font-bold tracking-[0.4em] text-accent uppercase mb-4">
-                {selectedSaint.region}
-              </span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-950 mb-8 tracking-tight">
                 {selectedSaint.name}
               </h2>
@@ -259,14 +385,11 @@ export default function SaraswatiHall() {
               </p>
 
               <div className="mt-16 pt-8 border-t border-red-100 flex items-center gap-4">
-                {/* The Ohm Container */}
                 <div className="w-10 h-10 rounded-full border border-red-200 flex items-center justify-center bg-red-50/30 shadow-sm transition-transform hover:scale-110">
                   <span className="text-red-600 font-serif italic text-xl drop-shadow-[0_0_8px_rgba(220,38,38,0.2)]">
                     ॐ
                   </span>
                 </div>
-
-                {/* The Text Label */}
                 <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">
                   Embodies Guru Tattva
                 </p>
@@ -286,7 +409,7 @@ export default function SaraswatiHall() {
           This is a Satsang where one can leave all the problems out and get
           rejuvenated and imbued with Peace and Tranquility.
         </p>
-        <div className="text-6xl text-red-900 opacity-70 select-none   cursor-default  ">
+        <div className="text-6xl text-red-900 opacity-70 select-none cursor-default">
           ॐ
         </div>
       </section>

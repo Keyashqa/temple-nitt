@@ -33,7 +33,7 @@ export default function Footer() {
                 href="/about"
                 className="hover:text-orange-400 transition-colors duration-300 block"
               >
-                About Us
+                About
               </Link>
             </li>
             <li>

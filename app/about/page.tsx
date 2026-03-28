@@ -4,11 +4,11 @@ import Link from "next/link";
 export default function AboutPage() {
   const sannidhis = [
     { name: "Shri Vidya Ganapathi", icon: "🕉️" },
-    { name: "Shri Chandramouleeswarar", icon: "🐚" },
-    { name: "Shri Tripurasundari", icon: "🌺" },
-    { name: "Shri Valli Devasena sametha Subramanyar", icon: "🪶" },
-    { name: "Shri Hanuman", icon: "🚩" },
-    { name: "Navagraham", icon: "☀️" },
+    { name: "Shri Chandramouleeswarar", icon: "🔱" }, // Trisulam
+    { name: "Shri Tripurasundari", icon: "💠" }, // Representing Sri Yantra
+    { name: "Shri Valli Devasena sametha Subramanyar", icon: "🗡️" }, // Representing the Vel
+    { name: "Shri Hanuman", icon: "🪓" }, // Representing the Gada/Maze
+    { name: "Navagraham", icon: "☀️" }, // Sun
   ];
 
   const parivaraDevathas = [
