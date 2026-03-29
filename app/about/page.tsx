@@ -1,15 +1,117 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const VelIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className="w-8 h-8 md:w-10 md:h-10 drop-shadow-[0_0_5px_rgba(180,83,9,0.3)]"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* The Spear Head (Vel) */}
+    <path
+      d="M12 2C10 2 6 6 6 11C6 13.5 8 15 12 16C16 15 18 13.5 18 11C18 6 14 2 12 2Z"
+      fill="url(#goldGradient)"
+    />
+    {/* The Shaft */}
+    <rect x="11.2" y="16" width="1.6" height="6" fill="url(#goldGradient)" />
+    {/* The Base */}
+    <path d="M9 22H15L16 23H8L9 22Z" fill="#B45309" />
+
+    <defs>
+      <linearGradient
+        id="goldGradient"
+        x1="6"
+        y1="2"
+        x2="18"
+        y2="22"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FDE68A" />
+        <stop offset="0.5" stopColor="#F59E0B" />
+        <stop offset="1" stopColor="#B45309" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+const GadaIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className="w-8 h-8 md:w-10 md:h-10 drop-shadow-[0_0_8px_rgba(180,83,9,0.3)]"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="gadaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FDE68A" />
+        <stop offset="50%" stopColor="#F59E0B" />
+        <stop offset="100%" stopColor="#B45309" />
+      </linearGradient>
+    </defs>
+
+    {/* Top Point (Shikhara) */}
+    <path d="M12 2L13.5 4.5H10.5L12 2Z" fill="url(#gadaGold)" />
+
+    {/* Tiered Head - Capturing the rounded, ornate bulb */}
+    <ellipse cx="12" cy="7.5" rx="3.5" ry="1.5" fill="url(#gadaGold)" />
+    <path
+      d="M12 5.5C8 5.5 6 8.5 6 11C6 13.5 8 15.5 12 15.5C16 15.5 18 13.5 18 11C18 8.5 16 5.5 12 5.5Z"
+      fill="url(#gadaGold)"
+      stroke="#92400E"
+      strokeWidth="0.2"
+    />
+
+    {/* Decorative horizontal bands on the head */}
+    <line
+      x1="6.5"
+      y1="9"
+      x2="17.5"
+      y2="9"
+      stroke="#92400E"
+      strokeWidth="0.1"
+      opacity="0.5"
+    />
+    <line
+      x1="6.1"
+      y1="11"
+      x2="17.9"
+      y2="11"
+      stroke="#92400E"
+      strokeWidth="0.1"
+      opacity="0.5"
+    />
+    <line
+      x1="6.5"
+      y1="13"
+      x2="17.5"
+      y2="13"
+      stroke="#92400E"
+      strokeWidth="0.1"
+      opacity="0.5"
+    />
+
+    {/* Long ornate Shaft */}
+    <rect x="11.3" y="15.5" width="1.4" height="6.5" fill="url(#gadaGold)" />
+
+    {/* Bottom Diamond Base */}
+    <path d="M12 23L14 21.5H10L12 23Z" fill="url(#gadaGold)" />
+  </svg>
+);
+
 export default function AboutPage() {
-  const sannidhis = [
-    { name: "Shri Vidya Ganapathi", icon: "🕉️" },
-    { name: "Shri Chandramouleeswarar", icon: "🔱" }, // Trisulam
-    { name: "Shri Tripurasundari", icon: "💠" }, // Representing Sri Yantra
-    { name: "Shri Valli Devasena sametha Subramanyar", icon: "🗡️" }, // Representing the Vel
-    { name: "Shri Hanuman", icon: "🪓" }, // Representing the Gada/Maze
-    { name: "Navagraham", icon: "☀️" }, // Sun
-  ];
+ const sannidhis = [
+   { name: "Shri Vidya Ganapathi", icon: "🕉️", symbol: "Modakam" },
+   { name: "Shri Chandramouleeswarar", icon: "🔱", symbol: "Trisulam" },
+   { name: "Shri Tripurasundari", icon: "💠", symbol: "Sri Yantra" },
+   {
+     name: "Shri Valli Devasena sametha Subramanyar",
+     icon: <VelIcon />,
+     symbol: "Sacred Vel",
+   },
+   { name: "Shri Hanuman", icon: <GadaIcon />, symbol: "Mace (Gada)" },
+   { name: "Navagraham", icon: "☀️", symbol: "Surya" },
+ ];
 
   const parivaraDevathas = [
     "Dakshinamurthy",
@@ -51,7 +153,6 @@ export default function AboutPage() {
                 className="object-cover hover:scale-105 transition duration-700 ease-in-out"
                 priority
               />
-               
             </div>
           </div>
 
@@ -91,17 +192,16 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Primary Deities */}
-            {sannidhis.map((deity, index) => (
-              <div
-                key={index}
-                className="divine-glass p-6 rounded-2xl flex items-center gap-5 hover:border-primary/30 transition-colors group"
-              >
-                <span className="text-3xl grayscale group-hover:grayscale-0 transition-all">
-                  {deity.icon}
-                </span>
-                <span className="text-lg font-serif font-semibold text-gray-800 tracking-tight">
-                  {deity.name}
-                </span>
+            {sannidhis.map((s, i) => (
+              <div key={i} className="flex flex-col items-center bg-white/50 border border-primary/10 rounded-2xl p-6 shadow-sm  hover:border-primary hover:transition-all cursor-default">
+                <div className="w-16 h-16 flex items-center justify-center">
+                  {typeof s.icon === "string" ? (
+                    <span className="text-3xl">{s.icon}</span>
+                  ) : (
+                    s.icon
+                  )}
+                </div>
+                <p>{s.name}</p>
               </div>
             ))}
 
