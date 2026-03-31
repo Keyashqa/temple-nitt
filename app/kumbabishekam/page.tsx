@@ -79,6 +79,12 @@ const initialSchedule = [
   },
 ];
 
+const mandalaCharges = [
+  { type: "Flowers", price: "Rs. 500" },
+  { type: "Abishegam & Prasadam", price: "Rs. 1,000" },
+  { type: "Abishegam, Flowers & Prasadam", price: "Rs. 1,500" },
+];
+
 export default function KumbabishekamPage() {
   const [schedule, setSchedule] = useState(initialSchedule);
 
@@ -361,30 +367,127 @@ export default function KumbabishekamPage() {
         </div>
       </section>
 
-      {/* --- 4. CALL TO DEVOTION & FOOTER --- */}
-      <section className="py-16 md:py-32 px-6">
-        <div className="relative max-w-6xl mx-auto overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-maroon p-10 md:p-24 text-center shadow-2xl">
-          <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-accent/10 rounded-full blur-3xl -mr-16 -mt-16" />
+      {/* --- 1. FEATURED SECTION: MANDALA POOJAI --- */}
+      <section className="mb-16 md:mb-32 px-4 md:px-0">
+        {/* Reduced border-radius and padding for mobile */}
+        <div className="relative p-6 md:p-12 rounded-[2rem] md:rounded-[4rem] bg-gradient-to-br from-orange-50 to-white border border-orange-100 shadow-xl overflow-hidden">
+          {/* Scaled down background Om symbol for mobile */}
+          <div className="absolute right-[-5%] top-[-5%] text-[8rem] md:text-[15rem] font-serif text-orange-200/20 pointer-events-none select-none">
+            ॐ
+          </div>
 
-          <h2 className="relative z-10 text-3xl md:text-6xl font-serif text-white mb-6 md:mb-8">
-            Become a Part of <br />
-            <span className="italic text-accent">Temple History</span>
-          </h2>
+          {/* Grid stacks on mobile (default), 2 columns on lg screens */}
+          <div className="relative z-10 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-widest mb-4 md:mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping" />
+                Upcoming Special Pooja
+              </span>
 
-          <p className="relative z-10 text-white/70 max-w-xl mx-auto mb-8 md:mb-12 font-light text-base md:text-lg leading-relaxed">
-            Contribution to a Kumbabishekam is considered the highest form of
-            Charity (Danam), bringing auspiciousness to one&apos;s home and
-            lineage.
-          </p>
+              {/* Adjusted text sizes for smaller screens */}
+              <h2 className="text-3xl md:text-6xl font-serif font-bold text-gray-900 mb-4 md:mb-6 text-balance">
+                Mandala <span className="italic text-primary">Poojai</span>
+              </h2>
 
-          <Link
-            href="/services"
-            className="relative z-10 inline-block px-10 md:px-12 py-4 md:py-5 bg-accent text-maroon rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform active:scale-95 shadow-lg"
-          >
-            Sponsor Pooja
-          </Link>
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8 font-light italic">
+                The Shri Vidya Ganapathi Temple invites devotees to participate
+                in the sacred Mandala Poojai, commencing from the
+                <span className="font-semibold text-gray-900 ml-1">
+                  evening of 6th April
+                </span>
+                . Seek divine blessings for your family.
+              </p>
+
+              <div className="space-y-3 md:space-y-4 mb-8 md:mb-10 max-w-md">
+                <h4 className="text-[10px] uppercase tracking-widest font-bold text-gray-400">
+                  Sponsorship Details
+                </h4>
+                {mandalaCharges.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex justify-between items-start gap-4 py-3 border-b border-orange-100/50"
+                  >
+                    <span className="text-gray-700 font-serif text-sm md:text-base leading-tight">
+                      {item.type}
+                    </span>
+                    <span className="font-bold text-primary whitespace-nowrap text-sm md:text-base shrink-0">
+                      {item.price}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Card styling adjusted for mobile spacing */}
+            <div className="bg-white/80 backdrop-blur-md p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-orange-100 shadow-sm">
+              <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-900 mb-6 md:mb-8">
+                Kumbabishekam Committee
+              </h3>
+
+              <div className="space-y-6">
+                <div className="p-5 md:p-6 rounded-2xl bg-gray-900 text-white shadow-lg shadow-gray-200">
+                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold text-orange-300 mb-2">
+                    Payment Instruction
+                  </p>
+                  <p className="text-[11px] md:text-xs font-light text-gray-300 leading-relaxed mb-5">
+                    We invite devotees to use the following Google Form to
+                    contribute and share information of payment transfer along
+                    with the names, gothram, nakshatrams and rasi of you and
+                    your family for Sankalpam.
+                  </p>
+
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSekr7zlnQ6nMqO6E7DZqQOFCOAakWRz-pB_ElOxaYDFfP0pxg/viewform?usp=publish-editor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-5 py-3 bg-orange-400 hover:bg-orange-500 text-gray-900 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-95 shadow-lg"
+                  >
+                    <span>Fill Google Form</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </div>
+
+                <div className="pt-6 border-t border-orange-50">
+                  <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-4">
+                    Contact Coordinators
+                  </p>
+                  {/* Grid stays 1 col on small phones, 2 on sm devices up */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                    <div className="p-4 rounded-xl bg-orange-50/50 group">
+                      <p className="text-[10px] md:text-xs text-gray-400 mb-1">
+                        Jayarama Gurukkal
+                      </p>
+                      <p className="text-base md:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
+                        86100 22453
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-orange-50/50 group">
+                      <p className="text-[10px] md:text-xs text-gray-400 mb-1">
+                        Sriram
+                      </p>
+                      <p className="text-base md:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
+                        96111 91544
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
- 
       </section>
     </main>
   );
