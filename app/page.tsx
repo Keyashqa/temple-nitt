@@ -124,10 +124,10 @@ export default function HomePage() {
                 KUMBABISHEKAM
               </Link>
               <Link
-                href="/services"
+                href="/kumbabishekam#mandala-poojai"
                 className="border border-gray-300 px-6 py-3 md:px-8 md:py-4 text-[10px] md:text-xs font-bold rounded-sm hover:bg-gray-50 transition text-center"
               >
-                MANDALA POOJA
+                MANDALA POOJAI
               </Link>
             </div>
           </div>
