@@ -6,5 +6,6 @@ import { saint } from "./saint";
 import { staff } from "./staff";
 import { webcast } from "./webcast";    
 import { category } from "./category";
+import { balalayam } from "./balayam";
 
-export const schemaTypes = [event, article, gallery, pooja, saint, staff, webcast, category];
+export const schemaTypes = [event, article, gallery, pooja, saint, staff, webcast, category, balalayam];
