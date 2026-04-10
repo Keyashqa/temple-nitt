@@ -25,11 +25,19 @@ export const gallery = defineType({
                         type: "string",
                 }),
                 defineField({
-                        name: "image",
-                        title: "Upload Image",
-                        type: "image",
-                        options: { hotspot: true },
-                        validation: (Rule) => Rule.required(),
+                        name: "media",
+                        title: "Media (Image or Video)",
+                        type: "array",
+                        of: [
+                                { type: "image", options: { hotspot: true } },
+                                {
+                                        name: "video",
+                                        type: "file",
+                                        title: "Video File",
+                                        options: { accept: "video/*" }
+                                }
+                        ],
+                        validation: (Rule) => Rule.max(1).required(), // Keeps it as a single choice
                 }),
         ],
 });

@@ -16,8 +16,11 @@ type GalleryImage = {
   _id: string;
   title: string;
   tag: string;
-  category: string; // This will now hold the expanded title string
-  imageUrl: any;
+  category: string;
+  mediaItem: {
+    _type: string;
+    url: string;
+  };
 };
 
 // 1. Fetch gallery items + expand the category reference
@@ -27,7 +30,12 @@ const GALLERY_QUERY = `*[_type == "gallery"] | order(_createdAt desc) {
   title,
   tag,
   "category": category->title,
-  "imageUrl": image.asset->url 
+  // This logic checks the new 'media' array first, 
+  // and falls back to the old 'image' field if media is empty
+  "mediaItem": coalesce(
+    media[0] { "_type": _type, "url": asset->url },
+    image { "_type": _type, "url": asset->url }
+  )
 }`;
 
 const CATEGORY_QUERY = `*[_type == "category"] | order(title asc).title`;
@@ -179,14 +187,30 @@ function GalleryContent() {
                     >
                       <div className="relative w-full h-full rounded-[2.5rem] bg-[#2a241e] border-[1px] border-accent/30 p-4 md:p-6 shadow-2xl">
                         <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden bg-black">
-                          <Image
-                            src={img.imageUrl} // Use the direct URL we fetched in the query
-                            alt={img.title}
-                            fill
-                            className="object-contain"
-                            priority={isActive}
-                            unoptimized // Add this if you face issues with Next.js image optimization on external domains
-                          />
+                          <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden bg-black">
+                            {img.mediaItem?._type === "video" ? (
+                              <video
+                                src={img.mediaItem.url}
+                                className="w-full h-full object-contain"
+                                controls={isActive} // Show controls only when active
+                                autoPlay={isActive}
+                                muted
+                                loop
+                                playsInline
+                              />
+                            ) : (
+                              <Image
+                                src={
+                                  img.mediaItem?.url || "/fallback-image.jpg"
+                                }
+                                alt={img.title}
+                                fill
+                                className="object-contain"
+                                priority={isActive}
+                                unoptimized
+                              />
+                            )}
+                          </div>
                         </div>
                       </div>
 

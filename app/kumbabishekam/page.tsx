@@ -15,13 +15,13 @@ const initialSchedule = [
         type: "Morning",
         time: "09:00 am - 12:30 pm",
         slotId: "3_april_morning",
-        link: "#",
+        links: ["#"],
       },
       {
         type: "Evening",
         time: "05:30 pm - 09:00 pm",
         slotId: "3_april_evening",
-        link: "#",
+        links: ["#"],
       },
     ],
   },
@@ -34,13 +34,13 @@ const initialSchedule = [
         type: "Morning",
         time: "08:30 am - 12:30 pm",
         slotId: "4_april_morning",
-        link: "#",
+        links: ["#"],
       },
       {
         type: "Evening",
         time: "04:00 pm - 09:30 pm",
         slotId: "4_april_evening",
-        link: "#",
+        links: ["#"],
       },
     ],
   },
@@ -53,13 +53,13 @@ const initialSchedule = [
         type: "Morning",
         time: "08:30 am - 12:30 pm",
         slotId: "5_april_morning",
-        link: "#",
+        links: ["#"],
       },
       {
         type: "Evening",
         time: "04:00 pm - 09:30 pm",
         slotId: "5_april_evening",
-        link: "#",
+        links: ["#"],
       },
     ],
   },
@@ -72,7 +72,13 @@ const initialSchedule = [
         type: "Morning",
         time: "05:00 am - 12:00 pm",
         slotId: "6_april_morning",
-        link: "#",
+        links: ["#"],
+      },
+      {
+        type: "Evening",
+        time: "04:00 pm - 09:30 pm",
+        slotId: "6_april_evening",
+        links: ["#"],
       },
     ],
   },
@@ -116,15 +122,21 @@ export default function KumbabishekamPage() {
         }
 
         // Merging Sanity URLs into local schedule
-        const updatedSchedule = initialSchedule.map((day) => ({
-          ...day,
-          sessions: day.sessions.map((session) => {
-            const match = links.find(
-              (l: any) => l.sessionSlot === session.slotId,
-            );
-            return { ...session, link: match ? match.youtubeLink : "#" };
-          }),
-        }));
+       const updatedSchedule = initialSchedule.map((day) => ({
+         ...day,
+         sessions: day.sessions.map((session) => {
+           const match = links.find(
+             (l: any) => l.sessionSlot === session.slotId,
+           );
+
+           // Split the string by comma and trim whitespace
+           const linksArray = match?.youtubeLink
+             ? match.youtubeLink.split(",").map((s: string) => s.trim())
+             : ["#"];
+
+           return { ...session, links: linksArray }; // Changed key to 'links' (plural)
+         }),
+       }));
 
         setSchedule(updatedSchedule);
       } catch (err) {
@@ -261,15 +273,27 @@ export default function KumbabishekamPage() {
                             {session.time}
                           </td>
                           <td className="p-6">
-                            {session.link !== "#" ? (
-                              <a
-                                href={session.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs font-bold text-maroon hover:text-accent flex items-center gap-1 transition-colors"
-                              >
-                                PHOTO GALLERY <span>↗</span>
-                              </a>
+                            {session.links && session.links[0] !== "#" ? (
+                              <div className="flex flex-col items-end gap-2">
+                                {session.links && session.links[0] !== "#" ? (
+                                  session.links.map((url, i) => (
+                                    <a
+                                      key={i}
+                                      href={url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="px-4 py-2 bg-creme text-maroon text-[10px] font-bold rounded-lg border border-accent/10 whitespace-nowrap"
+                                    >
+                                      PHOTO GALLERY{" "}
+                                      {session.links.length > 1 ? i + 1 : ""}
+                                    </a>
+                                  ))
+                                ) : (
+                                  <span className="px-4 py-2 text-gray-300 text-[10px] font-bold italic">
+                                    SOON
+                                  </span>
+                                )}
+                              </div>
                             ) : (
                               <span className="text-xs font-bold text-gray-300 cursor-default">
                                 LINK SOON
@@ -301,11 +325,15 @@ export default function KumbabishekamPage() {
                       {row.sessions.map((session, sIdx) => (
                         <div
                           key={sIdx}
-                          className="flex items-center justify-between py-2 border-b border-accent/5 last:border-0"
+                          className="flex items-start justify-between py-2 border-b border-accent/5 last:border-0"
                         >
                           <div>
                             <p
-                              className={`text-[10px] font-bold uppercase ${session.type === "Morning" ? "text-orange-600" : "text-blue-600"}`}
+                              className={`text-[10px] font-bold uppercase ${
+                                session.type === "Morning"
+                                  ? "text-orange-600"
+                                  : "text-blue-600"
+                              }`}
                             >
                               {session.type}
                             </p>
@@ -313,20 +341,28 @@ export default function KumbabishekamPage() {
                               {session.time}
                             </p>
                           </div>
-                          {session.link !== "#" ? (
-                            <a
-                              href={session.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="px-4 py-2 bg-creme text-maroon text-[10px] font-bold rounded-lg border border-accent/10"
-                            >
-                              PHOTO GALLERY
-                            </a>
-                          ) : (
-                            <span className="px-4 py-2 text-gray-300 text-[10px] font-bold italic">
-                              SOON
-                            </span>
-                          )}
+
+                          {/* Container for the links - stacks them vertically on the right */}
+                          <div className="flex flex-col items-end gap-2">
+                            {session.links && session.links[0] !== "#" ? (
+                              session.links.map((url: string, i: number) => (
+                                <a
+                                  key={i}
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-4 py-2 bg-creme text-maroon text-[10px] font-bold rounded-lg border border-accent/10 whitespace-nowrap text-center min-w-[120px]"
+                                >
+                                  PHOTO GALLERY{" "}
+                                  {session.links.length > 1 ? i + 1 : ""}
+                                </a>
+                              ))
+                            ) : (
+                              <span className="px-4 py-2 text-gray-300 text-[10px] font-bold italic">
+                                SOON
+                              </span>
+                            )}
+                          </div>
                         </div>
                       ))}
                     </div>

@@ -18,6 +18,7 @@ export const webcast = defineType({
                                         { title: "5 April - Morning", value: "5_april_morning" },
                                         { title: "5 April - Evening", value: "5_april_evening" },
                                         { title: "6 April - Morning", value: "6_april_morning" },
+                                        { title: "6 April - Evening", value: "6_april_evening" },
                                 ],
                         },
                         validation: (Rule) => Rule.required(),
@@ -25,8 +26,8 @@ export const webcast = defineType({
                 defineField({
                         name: "youtubeLink",
                         title: "Web cast link",
-                        type: "url",
-                        placeholder: "https://youtube.com/live/...",
+                        type: "text",
+                        placeholder: "https://link1.com, https://link2.com",
                         validation: (Rule) => Rule.required(),
                 }),
         ],
