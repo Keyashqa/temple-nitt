@@ -7,7 +7,7 @@ export const article = defineType({
         fields: [
                 defineField({
                         name: "title",
-                        title: "Title",
+                        title: "Tile",
                         type: "string",
                         validation: (Rule) => Rule.required(),
                 }),
