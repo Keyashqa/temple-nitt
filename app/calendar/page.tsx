@@ -4,9 +4,7 @@ import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 
 const months = [
-  { id: "jan", label: "Jan" },
-  { id: "feb", label: "Feb" },
-  { id: "mar", label: "Mar" },
+  
   { id: "apr", label: "Apr" },
   { id: "may", label: "May" },
   { id: "jun", label: "Jun" },
@@ -16,6 +14,9 @@ const months = [
   { id: "oct", label: "Oct" },
   { id: "nov", label: "Nov" },
   { id: "dec", label: "Dec" },
+  { id: "jan", label: "Jan" },
+  { id: "feb", label: "Feb" },
+  { id: "mar", label: "Mar" },
 ];
 
 export default function CalendarPage() {
