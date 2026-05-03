@@ -5,9 +5,7 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 
 const months = [
-  { id: "jan", label: "Jan" },
-  { id: "feb", label: "Feb" },
-  { id: "mar", label: "Mar" },
+  
   { id: "apr", label: "Apr" },
   { id: "may", label: "May" },
   { id: "jun", label: "Jun" },
@@ -17,6 +15,9 @@ const months = [
   { id: "oct", label: "Oct" },
   { id: "nov", label: "Nov" },
   { id: "dec", label: "Dec" },
+  { id: "jan", label: "Jan" },
+  { id: "feb", label: "Feb" },
+  { id: "mar", label: "Mar" },
 ];
 
 export default function CalendarPage() {
@@ -54,7 +55,7 @@ export default function CalendarPage() {
         <header className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-maroon">
             Special Pooja{" "}
-            <span className="italic font-light text-accent">Calendar</span>
+            <span className="italic font-light text-accent">Calendar 2026-27</span>
           </h1>
           <div className="w-20 h-1 bg-accent mx-auto mt-4" />
         </header>
