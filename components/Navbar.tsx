@@ -15,7 +15,7 @@ const allLinks = [
   { name: "Articles", href: "/articles" },
   { name: "Timings", href: "/timings" },
   { name: "Pooja Services", href: "/services" },
-  { name: "Special Pooja Calendar 2026-27", href: "/calendar" },
+  { name: "Special Pooja Calendar", href: "/calendar" },
   { name: "Temple Visitors", href: "/visitors" },
   { name: "Balavihar Classes", href: "/classes" },
   { name: "Library", href: "/library" },
@@ -54,8 +54,8 @@ export default function Navbar() {
     <header
       ref={navRef}
       className={`sticky top-0 z-50 transition-all duration-300 border-b ${scrolled
-          ? "bg-white/70 backdrop-blur-md border-gray-200/50 shadow-sm"
-          : "bg-white border-transparent"
+        ? "bg-white/70 backdrop-blur-md border-gray-200/50 shadow-sm"
+        : "bg-white border-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative z-[60]">
