@@ -64,7 +64,7 @@ export const templeVisitor = defineType({
       subtitle: "title",
       media: "photo",
     },
-    prepare({ title, subtitle, media }: { title: string; subtitle: string; media: any }) {
+    prepare({ title, subtitle, media }) {
       return {
         title,
         subtitle,
