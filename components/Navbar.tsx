@@ -15,7 +15,8 @@ const allLinks = [
   { name: "Articles", href: "/articles" },
   { name: "Timings", href: "/timings" },
   { name: "Pooja Services", href: "/services" },
-  { name: "Special Pooja Calendar 2026", href: "/calendar" },
+  { name: "Special Pooja Calendar", href: "/calendar" },
+  { name: "Temple Visitors", href: "/visitors" },
   { name: "Balavihar Classes", href: "/classes" },
   { name: "Library", href: "/library" },
   { name: "Gallery", href: "/gallery" },
@@ -52,11 +53,10 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className={`sticky top-0 z-50 transition-all duration-300 border-b ${
-        scrolled
+      className={`sticky top-0 z-50 transition-all duration-300 border-b ${scrolled
           ? "bg-white/70 backdrop-blur-md border-gray-200/50 shadow-sm"
           : "bg-white border-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative z-[60]">
         {/* Logo */}
@@ -94,10 +94,9 @@ export default function Navbar() {
         className={`absolute top-[80px] right-0 w-full md:max-w-xs bg-white border-l border-b border-gray-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top 
           /* CRITICAL FIXES BELOW */
           max-h-[calc(100vh-80px)] overflow-y-auto custom-scrollbar
-          ${
-            isOpen
-              ? "opacity-100 translate-y-0 scale-y-100 pointer-events-auto"
-              : "opacity-0 -translate-y-4 scale-y-95 pointer-events-none"
+          ${isOpen
+            ? "opacity-100 translate-y-0 scale-y-100 pointer-events-auto"
+            : "opacity-0 -translate-y-4 scale-y-95 pointer-events-none"
           }`}
       >
         <nav className="flex flex-col p-3 gap-1">
@@ -107,9 +106,8 @@ export default function Navbar() {
               href={item.href}
               onClick={() => setIsOpen(false)}
               style={{ transitionDelay: isOpen ? `${index * 20}ms` : "0ms" }}
-              className={`text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3.5 rounded-2xl transition-all duration-300 ${
-                isOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
-              }`}
+              className={`text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-2 rounded-2xl transition-all duration-300 ${isOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
+                }`}
             >
               {item.name}
             </Link>

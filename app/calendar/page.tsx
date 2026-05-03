@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 
 const months = [
@@ -53,7 +54,7 @@ export default function CalendarPage() {
         <header className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-maroon">
             Special Pooja{" "}
-            <span className="italic font-light text-accent">Calendar 2026</span>
+            <span className="italic font-light text-accent">Calendar</span>
           </h1>
           <div className="w-20 h-1 bg-accent mx-auto mt-4" />
         </header>
@@ -115,6 +116,15 @@ export default function CalendarPage() {
               </tbody>
             </table>
           </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/services"
+            className="inline-block font-serif text-maroon underline underline-offset-4 decoration-accent hover:text-accent transition-colors text-base"
+          >
+            Visit Pooja Services Page to know more details of charges and payment instructions
+          </Link>
         </div>
 
         <footer className="mt-10 text-center">
