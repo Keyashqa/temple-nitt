@@ -29,7 +29,15 @@ const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     });
   }
 };
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
 
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+
+  return `${day}-${month}-${year}`;
+};
 export default function KumbabishekamPage() {
   const [webcastGroups, setWebcastGroups] = useState<WebcastGroup[]>([]);
   const [videoUrl, setVideoUrl] = useState("/Kumbabishekam_video.mp4");
@@ -192,7 +200,7 @@ export default function KumbabishekamPage() {
                         >
                           <td className="px-6 py-4">
                             <p className="font-bold text-maroon">
-                              {entry.date}
+                              {formatDate(entry.date)}
                             </p>
                             {entry.subtitle && (
                               <p className="text-xs text-gray-500 mt-0.5">
@@ -238,7 +246,7 @@ export default function KumbabishekamPage() {
                       >
                         <div>
                           <p className="font-bold text-maroon text-sm">
-                            {entry.date}
+                            {formatDate(entry.date)}
                           </p>
                           {entry.subtitle && (
                             <p className="text-xs text-gray-500 mt-0.5">
@@ -262,7 +270,7 @@ export default function KumbabishekamPage() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-4 py-2 bg-maroon text-accent text-[10px] font-bold rounded-lg hover:bg-maroon-light transition-colors shadow-sm whitespace-nowrap"
                         >
-                          ▶ Watch Live
+                          Photo Album
                         </a>
                       </div>
                     ))}
